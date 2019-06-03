@@ -1,6 +1,6 @@
 import React from "react"
 import { View } from "react-native"
-import { PageHeader } from '../components'
+import { PageHeader, Auth } from '../components'
 
 const styles = {
   container: {
@@ -17,18 +17,24 @@ export default class Page extends React.Component {
     this.setState({ navOpen: !this.state.navOpen })
   }
   
+  onNavigatePress = (path) => {
+    console.log(`---------- path ----------`)
+    console.log(path)
+  } 
+  
   render() {
     const nav = {
       toggle: this.toggleNav,
       open: this.state.navOpen,
+      onNavigate: this.onNavigatePress
     }
-    
+
     return (
       <View style={ styles.container } >
         <PageHeader
           nav={nav}
-          
         />
+        <Auth />
       </View>
     )
   }

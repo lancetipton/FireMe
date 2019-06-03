@@ -14,7 +14,7 @@ export const PageHeader = props => {
         navigation={'menu'}
         onNavigation={ nav.toggle }
       />
-      { nav.open && <Navigation { ...props } /> }
+      { nav.open && <Navigation { ...props } onNavigate={ props.nav.onPress } /> }
     </View>
   )
 }
