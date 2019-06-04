@@ -1,3 +1,5 @@
 export * from './auth'
 export * from './header'
 export * from './icon'
+export * from './typography'
+export * from './modal'

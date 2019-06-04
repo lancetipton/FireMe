@@ -1,16 +1,6 @@
 import React, { Component } from 'react'
-import RNModal from 'react-modal'
+import RNModal from 'react-responsive-modal';
 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
 
 class Modal extends Component {
 
@@ -22,10 +12,10 @@ class Modal extends Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  state = { status: false }
+  state = { isOpen: false }
 
   openModal() {
-    this.setState({ status: true})
+    this.setState({ isOpen: true })
   }
 
   afterOpenModal() {
@@ -33,39 +23,39 @@ class Modal extends Component {
   }
 
   closeModal() {
-    this.setState({ status: false, forced: true })
+    this.setState({ isOpen: false })
   }
   
   componentDidUpdate = () => {
-    this.checkStatus()
+    this.checkOpen()
   }
 
   componentDidMount = () => {
-    this.checkStatus()
+    this.checkOpen()
   }
 
-  checkStatus = () => {
-    const { status, afterOpen } = this.props
-    if(this.state.status !== status && !this.state.forced)
-      this.setState({ status })
+  checkOpen = () => {
+    const { isOpen } = this.props
+    if(this.state.isOpen !== isOpen)
+      this.setState({ isOpen })
   }
   
   render() {
     
     if(!this.props.getComponent) return null
 
-    const { getComponent, afterOpen, closeModal, beforeClose, styles, label } = this.props
-    
+    const { getComponent, afterOpen, closeModal, beforeClose, styles, theme } = this.props
+
     return (
       <RNModal
-        isOpen={ this.state.status }
-        onAfterOpen={ afterOpen }
-        onRequestClose={ beforeClose || this.closeModal }
-        style={ styles }
-        contentLabel={ label }
+        open={ this.state.isOpen }
+        onClose={ closeModal || this.closeModal}
+        onEntered={ afterOpen }
+        onClose={ beforeClose }
+        styles={ { ...styles, ...(theme && theme.modal || {}) } }
+        center
       >
-        { getComponent() }
-        <button onClick={closeModal || this.closeModal}>close</button> 
+        { getComponent(this.props, this.state) }
       </RNModal>
     )
   }

@@ -5,7 +5,7 @@ const initialState = {
   active: {},
 }
 
-export function user(state = initialState, action) {
+export function repos(state = initialState, action) {
   switch (action.type) {
     case ActionTypes.SET_ACTIVE_REPO: {
       if (!action.repoId) return state

@@ -21,6 +21,7 @@ export default class Page extends React.Component {
     console.log(`---------- path ----------`)
     console.log(path)
   } 
+
   
   render() {
     const nav = {
