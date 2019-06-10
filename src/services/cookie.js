@@ -1,4 +1,4 @@
-import { parseJSON, isObj } from 'jsUtils'
+import { parseJSON, isObj } from 'jsutils'
 
 const makeObject = obj => (parseJSON(obj) || obj)
 

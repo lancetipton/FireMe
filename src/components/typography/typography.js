@@ -1,5 +1,5 @@
 import React from 'react'
-import { isStr } from 'jsUtils'
+import { isStr } from 'jsutils'
 import { Heading, BodyText, withTheme } from 'material-bread';
 
 const ensureText = (children) => (

@@ -1,6 +1,6 @@
 import React from "react"
 import { View } from "react-native"
-import { PageHeader, Auth } from '../components'
+import { PageHeader, FireDb, Container } from '../components'
 
 const styles = {
   container: {
@@ -35,7 +35,9 @@ export default class Page extends React.Component {
         <PageHeader
           nav={nav}
         />
-        <Auth />
+        <Container>
+          <FireDb/>
+        </Container>
       </View>
     )
   }

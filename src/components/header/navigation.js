@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, ListExpand, ListItem } from "material-bread"
 import { Icon } from "../icon"
-import { isFunc } from 'jsUtils'
+import { isFunc } from 'jsutils'
 
 const NAV_ITEMS = [
   {

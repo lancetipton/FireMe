@@ -15,6 +15,12 @@ pids
 /.idea
 test/admin/temp
 
+/firebase.config.js
+
+SA.json
+
+fb_config.js
+
 vbga.dmg
 vbox.dmg
 

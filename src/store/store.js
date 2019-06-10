@@ -17,16 +17,13 @@ export const initializeStore = () => {
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__()
 
-  return createStore(
+  window.reduxStore = createStore(
     rootReducer,
     reDuxTools || undefined,
   )
+  return window.reduxStore
 }
 
-const getStore = () => {
-  return typeof window === 'undefined'
-    ? global.reduxStore
-    : window.parent.reduxStore
+export const getStore = () => {
+  return window.reduxStore
 }
-
-export default getStore

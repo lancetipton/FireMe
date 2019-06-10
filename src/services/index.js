@@ -1,2 +1,8 @@
 export * from './cookie'
-export * from './user'
+import UserService from './user'
+import FBService  from './firebase'
+
+export {
+  FBService,
+  UserService
+}

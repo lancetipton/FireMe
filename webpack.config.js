@@ -1,5 +1,17 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const WebpackShellPlugin = require('webpack-shell-plugin');
+
+const plugins = [
+  new HtmlWebPackPlugin({
+    template: "./dist/index.html",
+    filename: "./index.html"
+  }),
+  new WebpackShellPlugin({
+    onBuildStart: [ 'yarn fb:collections' ],
+    dev: false
+  })
+]
 
 module.exports = {
   module: {
@@ -10,6 +22,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
+            sourceType: "unambiguous",
             presets: ["@babel/preset-env", "@babel/preset-react"],
             plugins: [
               "@babel/plugin-transform-flow-strip-types",
@@ -21,7 +34,7 @@ module.exports = {
               "@babel/plugin-syntax-dynamic-import",
               "@babel/plugin-proposal-export-default-from",
               "@babel/plugin-transform-object-assign",
-              "@babel/plugin-transform-property-literals"              
+              "@babel/plugin-transform-property-literals"
             ]
           }
         }
@@ -44,12 +57,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./dist/index.html",
-      filename: "./index.html"
-    })
-  ],
+  plugins: plugins,
   resolve: {
     // auto resolves any react-native import as react-native-web
     alias: {

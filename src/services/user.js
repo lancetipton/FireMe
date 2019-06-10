@@ -1,8 +1,8 @@
-import { checkCall } from 'jsUtils'
+import { checkCall } from 'jsutils'
 import { getCookie } from './cookie'
 import Url from 'url'
 
-class User {
+export default class User {
   constructor(){
     this.cookie = getCookie()
   }
