@@ -11,7 +11,7 @@ let FireStore
  * @class
  * @implements {DB}
  */
-export default class Firebase {
+export default class Firestore {
 
   initialized = false
   evtMap = {

@@ -1,8 +1,8 @@
 export * from './cookie'
 import UserService from './user'
-import FBService  from './firebase'
+import FSService  from './firestore'
 
 export {
-  FBService,
+  FSService,
   UserService
 }

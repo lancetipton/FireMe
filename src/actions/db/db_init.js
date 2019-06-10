@@ -1,16 +1,16 @@
 import { getStore } from '../../store'
 import { ActionTypes } from '../../constants'
-import { FBService } from '../../services'
+import { FSService } from '../../services'
 import FBConfig from '../../models/firebase/fb_config.js'
 
 export const dbInit = async () => {
   
-  const firebase = new FBService(true, FBConfig)
-  await firebase.initialize()
+  const db = new FSService(true, FBConfig)
+  await db.initialize()
 
   getStore().dispatch({
     type: ActionTypes.FS_DB_INIT,
-    firebase
+    db
   })
   
 }

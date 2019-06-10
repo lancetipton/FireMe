@@ -15,6 +15,9 @@ export const ActionTypes = deepFreeze(convertConst([
   'DB_DOC_REMOVED',
   'DB_AUTH_CHANGE',
   
+  // Firestore Collection Actions
+  'FS_SELECT_COLLECTION',
+  
   // Firestore Doc Actions
   'FS_DB_INIT',
   'FS_SET_ACTIVE_DOC',

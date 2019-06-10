@@ -1,17 +1,18 @@
 import { ActionTypes } from '../constants'
 import { collections } from '../models/firebase/collections.json'
-import { uuid, reduceColl } from 'jsutils'
+import { uuid, reduceColl, wordCaps } from 'jsutils'
 
 const roots = reduceColl(collections, (key, id, org, rts) => {
   const split = id.split('-')
-  rts[id] = { id: id, name: split[split.length -1] }
+  rts[id] = { id: id, name: wordCaps(split[split.length -1]), icon: 'layer-group' }
   return rts
 }, {})
 
 const initialState = {
   collections: {},
+  activeCollection: null,
   activeDoc: null,
-  firebase: null,
+  db: null,
   roots: roots,
 }
 
@@ -35,15 +36,22 @@ export function firestore(state = initialState, action) {
     }
 
     case ActionTypes.FS_DB_INIT: {
-      return !action.firebase
+      return !action.db
         ? state
         : {
           ...state,
-          firebase: action.firebase,
+          db: action.db,
         }
     }
 
-
+    case ActionTypes.FS_SELECT_COLLECTION: {
+      return !action.collection
+        ? state
+        : {
+          ...state,
+          activeCollection: action.collection,
+        }
+    }
 
     case ActionTypes.FS_UPDATE_COLLECTION: {
       if (!action.docs) return state
