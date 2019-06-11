@@ -1,10 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { selectCollection } from '../../../actions'
 import { checkCall } from 'jsutils'
-import { withTheme, ProgressBar } from 'material-bread';
-import { CollectionList, H6 } from '../../'
+import { ProgressBar } from 'material-bread'
+import { withTheme } from 're-theme'
+import { List, H6 } from '../../'
+import { wordCaps } from 'jsutils'
 
 const onCollectionPress = function(item, props){
   checkCall(selectCollection, item)
@@ -13,11 +15,13 @@ const onCollectionPress = function(item, props){
 const showRootCollections = (props) => {
   const { roots } =  props
   return (
-    <CollectionList
+    <List
       items={ roots }
       onPress={ onCollectionPress }
       header={{
-        content: "Root Collections"
+        content: {
+          text: "Root Collections",
+        }
       }}
     />
   )
@@ -30,8 +34,7 @@ const onDocPress = function(item, props){
 }
 
 const formatDoc = (id, doc, props) => {
-  const item = {  ...doc, icon: 'file-code' }
-  return item
+  return {  ...doc, name: wordCaps(doc.name), icon: 'file-code' }
 }
 
 const showCollectionDocs = props => {
@@ -46,12 +49,14 @@ const showCollectionDocs = props => {
         <ProgressBar visible />
       </View>
     ) || (
-      <CollectionList
+      <List
         items={ docs }
         beforeBuildRow={ formatDoc }
         onPress={ onDocPress }
         header={{
-          content: `${activeCollection.name} Docs`,
+          content: {
+            text: `${activeCollection.name} Docs`,
+          },
           icon: {
             name: 'layer-group'
           }

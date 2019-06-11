@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Router from "./Router";
 import "./styles/global.css";
-import { BreadProvider } from 'material-bread';
+import { ReThemeProvider } from 're-theme'
 import { Main } from './theme'
 import { dbInit } from './actions'
+
 class App extends Component { 
   
-  state = {}
+  state = { theme: Main }
   
   componentDidMount = () => {
     if(!this.state.theme)
@@ -20,9 +21,9 @@ class App extends Component {
   
   render() {
     return (
-      <BreadProvider value={ this.state.theme || Main } >
+      <ReThemeProvider value={ this.state.theme || Main } >
         <Router />
-      </BreadProvider>
+      </ReThemeProvider>
     )
   }
 }

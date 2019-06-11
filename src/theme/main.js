@@ -23,7 +23,7 @@ const palette = {
 }
 
 
-export const MainTheme = {
+export const Main = {
  colors: { ...colors },
   btnPrimary: {
     backgroundColor: palette.primary,
@@ -58,7 +58,39 @@ export const MainTheme = {
   },
   bodyText: {
     marginBottom: 15,
-  }
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%',
+  },
+  listHeader: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%',
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 25,
+  },
+  listHeaderText: {
+    fontSize: '16px',
+    fontWeight: 'bold',
+  },
+  listItem: {
+    width: '100%',
+    minHeight: '50px',
+    fontSize: '14px',
+  },
+  listIcon: {
+    
+  },
+  listIconSize: 20,
+  icon: {
+    
+  },
+  
 }
 
 

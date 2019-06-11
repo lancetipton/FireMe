@@ -1,6 +1,6 @@
 import { ActionTypes } from '../constants'
 import { collections } from '../models/firebase/collections.json'
-import { uuid, reduceColl, wordCaps } from 'jsutils'
+import { reduceColl, wordCaps } from 'jsutils'
 
 const roots = reduceColl(collections, (key, id, org, rts) => {
   const split = id.split('-')

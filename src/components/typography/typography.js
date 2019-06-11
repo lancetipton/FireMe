@@ -1,6 +1,7 @@
 import React from 'react'
 import { isStr } from 'jsutils'
-import { Heading, BodyText, withTheme } from 'material-bread';
+import { Heading, BodyText } from 'material-bread'
+import { withTheme } from 're-theme'
 
 const ensureText = (children) => (
   isStr(children)

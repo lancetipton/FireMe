@@ -1,6 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
-import { Paper, withTheme } from 'material-bread'
+import { Paper } from 'material-bread'
+import { withTheme } from 're-theme'
 
 const Wrapper = props => {
   const cont = props.container || {}
@@ -8,7 +9,7 @@ const Wrapper = props => {
   const container = {
     ...cont,
     style: {
-      maxWidth: '90%',
+      maxWidth: '90vw',
       display: "block",
       margin: "auto",
       ...(cont.style),
@@ -21,6 +22,7 @@ const Wrapper = props => {
     shadow: pap.shadow || 5,
     style: {
       padding: 10,
+      minWidth: '90vw',
       ...pap.style,
     }
   }
