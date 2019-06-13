@@ -1,12 +1,12 @@
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { selectCollection } from '../../../actions'
-import { checkCall } from 'jsutils'
+import { selectCollection, selectDoc } from '../../../actions'
+import { checkCall, wordCaps } from 'jsutils'
 import { ProgressBar } from 'material-bread'
 import { withTheme } from 're-theme'
 import { List, H6 } from '../../'
-import { wordCaps } from 'jsutils'
+import { JTree } from '../../jTree'
 
 const onCollectionPress = function(item, props){
   checkCall(selectCollection, item)
@@ -28,9 +28,7 @@ const showRootCollections = (props) => {
 }
 
 const onDocPress = function(item, props){
-  console.log(`---------- item ----------`)
-  console.log(item)
-  // checkCall(selectCollection, item)
+  selectDoc(item)
 }
 
 const formatDoc = (id, doc, props) => {
@@ -66,8 +64,17 @@ const showCollectionDocs = props => {
   )
 }
 
+
+const showActiveDoc = (props) => {
+  return <JTree />
+}
+
 export const DBViewer = (props) => {
-  return !props.activeCollection && showRootCollections(props) || showCollectionDocs(props)
+  return props.activeDoc
+    ? showActiveDoc(props)
+    : !props.activeCollection 
+      ? showRootCollections(props)
+      : showCollectionDocs(props)
 }
 
 export const FireDb = withTheme(
@@ -75,5 +82,6 @@ export const FireDb = withTheme(
     roots: firestore.roots,
     activeCollection: firestore.activeCollection,
     docs: firestore.collections[ firestore.activeCollection && firestore.activeCollection.id ],
+    activeDoc: firestore.activeDoc,
   }))(DBViewer)
 )

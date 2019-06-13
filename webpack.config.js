@@ -18,7 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?!(material-bread|react-native-vector-icons|re-theme)\/).*/,
+        exclude: /node_modules\/(?!(material-bread|react-native-vector-icons|re-theme|jtree|jtree-definitions|jsutils)\/).*/,
         use: {
           loader: "babel-loader",
           options: {
